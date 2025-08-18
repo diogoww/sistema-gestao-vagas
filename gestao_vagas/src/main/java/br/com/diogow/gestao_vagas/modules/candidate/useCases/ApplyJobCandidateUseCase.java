@@ -3,6 +3,7 @@ package br.com.diogow.gestao_vagas.modules.candidate.useCases;
 import br.com.diogow.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.diogow.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.diogow.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.diogow.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.diogow.gestao_vagas.modules.company.repositories.JobRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ApplyJobCandidateUseCase {
     @Autowired
     private JobRepository jobRepository;
 
+    @Autowired
+    private ApplyJobRepository applyJobRepository;
+
     public void execute(UUID idCandidate, UUID idJob) {
         //validação candidato
         this.candidateRepository.findById(idCandidate)
@@ -30,5 +34,6 @@ public class ApplyJobCandidateUseCase {
                     throw new JobNotFoundException();
                 });
         //inscrição candidato na vaga
+
     }
 }

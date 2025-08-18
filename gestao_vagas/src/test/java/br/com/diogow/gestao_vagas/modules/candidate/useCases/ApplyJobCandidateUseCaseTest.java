@@ -49,7 +49,7 @@ public class ApplyJobCandidateUseCaseTest {
         candidate.setId(idCandidate);
 
         when(candidateRepository.findById(idCandidate)).thenReturn(Optional.of(candidate));
-        
+
         try{
             applyJobCandidateUseCase.execute(idCandidate, null);
         } catch (Exception e){
