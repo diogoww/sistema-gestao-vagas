@@ -3,6 +3,7 @@ package br.com.diogow.gestao_vagas.modules.candidate.useCases;
 import br.com.diogow.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.diogow.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.diogow.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.diogow.gestao_vagas.modules.candidate.entity.ApplyJobEntity;
 import br.com.diogow.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.diogow.gestao_vagas.modules.company.repositories.JobRepository;
 
@@ -16,13 +17,14 @@ public class ApplyJobCandidateUseCase {
 
     @Autowired
     private CandidateRepository candidateRepository;
+
     @Autowired
     private JobRepository jobRepository;
 
     @Autowired
     private ApplyJobRepository applyJobRepository;
 
-    public void execute(UUID idCandidate, UUID idJob) {
+    public ApplyJobEntity execute(UUID idCandidate, UUID idJob) {
         //validação candidato
         this.candidateRepository.findById(idCandidate)
                 .orElseThrow(() -> {
@@ -34,6 +36,10 @@ public class ApplyJobCandidateUseCase {
                     throw new JobNotFoundException();
                 });
         //inscrição candidato na vaga
-
+        var applyJob = ApplyJobEntity.builder()
+                .candidateId(idCandidate)
+                .jobId(idJob).build();
+        applyJob = applyJobRepository.save(applyJob);
+        return applyJob;
     }
 }
