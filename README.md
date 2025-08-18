@@ -1,12 +1,12 @@
-# Sistema de Gestão de Vagas (Backend)
+# 🏢 Sistema de Gestão de Vagas (Backend)
 
 Projeto backend para gestão de vagas, empresas e candidatos. Atualmente em desenvolvimento, com foco na implementação de testes automatizados e melhoria da qualidade do código. A implantação, monitoramento, frontend e alguns ajustes ainda serão adicionados.
 
-## Status
+## 🔜 Status
 - Em desenvolvimento (fase de testes e qualidade de código)
 - Implantação/monitoramento e frontend: pendentes
 
-## Tecnologias
+## 🖥️ Tecnologias
 - Java 17
 - Spring Boot 3.4.4
   - Spring Web
@@ -20,17 +20,17 @@ Projeto backend para gestão de vagas, empresas e candidatos. Atualmente em dese
 - OpenAPI/Swagger (`springdoc-openapi`)
 - Docker Compose (para o banco de dados)
 
-## Estrutura (módulos principais)
+## 🏗️ Estrutura (módulos principais)
 - `candidate`: cadastro/autenticação e operações de candidatos
 - `company`: cadastro/autenticação de empresas e gestão de vagas
 - `security`: filtros e configuração de segurança/JWT
 - `config`, `exceptions`, `providers`: suportes e utilitários
 
-## Requisitos
+## ✅ Requisitos
 - JDK 17
 - Docker + Docker Compose (opcional, para subir o PostgreSQL rapidamente)
 
-## Como rodar localmente
+## 🏃 Como rodar localmente
 1. Suba o banco (opcional, via Docker Compose):
    ```bash
    cd gestao_vagas
@@ -47,7 +47,7 @@ Projeto backend para gestão de vagas, empresas e candidatos. Atualmente em dese
      ```
 3. A aplicação ficará disponível em `http://localhost:8080`.
 
-## Configuração
+## ⚙️ Configuração
 Os parâmetros padrão estão em `gestao_vagas/src/main/resources/application.properties` (PostgreSQL local, `ddl-auto=update`).
 
 Recomendações de segurança (para produção):
@@ -56,29 +56,26 @@ Recomendações de segurança (para produção):
   - `security.token.secret.candidate` → `SECURITY_TOKEN_SECRET_CANDIDATE`
 - Configurar usuário/senha/URL do banco por variáveis de ambiente (`SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`).
 
-## Documentação da API
+## 🗃️ Documentação da API
 - Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 
-## Endpoints (visão geral)
+## 🌐 Endpoints (visão geral)
 - Autenticação empresa: `POST /company/auth`
 - Autenticação candidato: `POST /candidate/auth`
 - Cadastro de vaga (empresa): `POST /company/job/` (requer JWT com role `COMPANY`)
 
 Demais endpoints e contratos podem ser explorados via Swagger.
 
-## Testes e Qualidade
+## 🔍 Testes e Qualidade
 - Testes: `./mvnw test` (ou `mvnw.cmd test` no Windows)
 - Melhoria contínua de cobertura e regras de qualidade em andamento.
 
-## Roadmap
+## 🗺️ Roadmap
 - Testes e qualidade de código (em progresso)
 - Implantação: Dockerfile, CI/CD (GitHub Actions), variáveis de ambiente
 - Observabilidade e monitoramento: Spring Boot Actuator, métricas (Prometheus/Grafana), logs estruturados
 - Frontend para consumo das APIs
 - Ajustes finais de segurança e DX (tratamento de erros, mensagens, validações)
 
-## Contribuição
-Contribuições são bem-vindas. Abra uma issue ou envie um PR.
-
-## Licença
+## 📜 Licença
 A definir. 
