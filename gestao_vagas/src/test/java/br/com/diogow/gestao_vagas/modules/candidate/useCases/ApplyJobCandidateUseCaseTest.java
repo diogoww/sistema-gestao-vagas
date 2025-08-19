@@ -86,4 +86,4 @@ public class ApplyJobCandidateUseCaseTest {
         assertThat(result).hasFieldOrProperty("id");
         assertNotNull(result.getId());
     }
-} // Criando teste de sucesso do apply job
+}
