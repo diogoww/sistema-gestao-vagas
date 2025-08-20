@@ -1,5 +1,6 @@
 package br.com.diogow.gestao_vagas.modules.company.controllers;
 
+import br.com.diogow.gestao_vagas.exceptions.CompanyNotFoundException;
 import br.com.diogow.gestao_vagas.modules.company.dto.CreateJobDTO;
 import br.com.diogow.gestao_vagas.modules.company.entities.CompanyEntity;
 import br.com.diogow.gestao_vagas.modules.company.repositories.CompanyRepository;
@@ -22,6 +23,8 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.UUID;
 
 import static br.com.diogow.gestao_vagas.modules.utils.TestUtils.objectToJSON;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 @RunWith(SpringRunner.class)
@@ -70,5 +73,24 @@ public class CreateJobControllerTest {
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk());
         System.out.println(result);
+    }
+
+    @Test
+    public void should_be_able_to_create_a_new_job_if_company_not_found() throws Exception {
+        var createdJobDTO = CreateJobDTO.builder()
+                .benefits("BENEFITS_TEST")
+                .description("DESCRIPTION_TEST")
+                .level("LEVEL_TEST")
+                .build();
+        try {
+            mvc.perform(MockMvcRequestBuilders.post("/company/job/")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectToJSON(createdJobDTO))
+                    .header("Authorization", TestUtils.generateToken(UUID.randomUUID(), "JAVAGAS_@123#"))
+            );
+        } catch (Exception e){
+            assertThat(e).isInstanceOf(CompanyNotFoundException.class);
+        }
+
     }
 }
