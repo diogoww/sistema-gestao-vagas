@@ -12,7 +12,7 @@
 	<artifactId>gestao_vagas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gestao_vagas</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Gestão de Vagas</description>
 	<url/>
 	<licenses>
 		<license/>
