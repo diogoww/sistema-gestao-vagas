@@ -76,6 +76,3 @@ Demais endpoints e contratos podem ser explorados via Swagger.
 - Observabilidade e monitoramento: Spring Boot Actuator, métricas (Prometheus/Grafana), logs estruturados
 - Frontend para consumo das APIs
 - Ajustes finais de segurança e DX (tratamento de erros, mensagens, validações)
-
-## 📜 Licença
-A definir. 
