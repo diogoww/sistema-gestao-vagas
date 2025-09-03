@@ -13,10 +13,10 @@ services:
     container_name: gestao_vagas_postgres
     image: postgres
     ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
-        - POSTGRES_USER=${DATABASE_USERNAME}
-        - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin
         - POSTGRES_DB=gestao_vagas
   prometheus:
     container_name: prometheus
