@@ -1,23 +1,31 @@
-version: '3.8'
-
 networks:
   gv-network:
     driver: bridge
 
 volumes:
+  postgres_data:
   prometheus_data:
   grafana_data:
 
 services:
   postgres:
     container_name: gestao_vagas_postgres
-    image: postgres
+    image: postgres:16
     ports:
       - 5432:5432
     environment:
         - POSTGRES_USER=admin
-        - POSTGRES_PASSWORD=admin
+        - POSTGRES_PASSWORD=postgres
         - POSTGRES_DB=gestao_vagas
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d gestao_vagas"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - gv-network
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
