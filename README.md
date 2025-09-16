@@ -2,9 +2,7 @@
 
 Projeto backend para gestão de vagas, empresas e candidatos. Atualmente em desenvolvimento, com foco na implementação de testes automatizados e melhoria da qualidade do código. A implantação, monitoramento, frontend e alguns ajustes ainda serão adicionados.
 
-## 🔜 Status
-- Em desenvolvimento (fase de testes e qualidade de código)
-- Implantação/monitoramento e frontend: pendentes
+## 🔜 Status - Concluído!
 
 ## 🖥️ Tecnologias
 - Java 17
